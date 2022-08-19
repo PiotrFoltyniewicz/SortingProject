@@ -161,13 +161,13 @@ void MeasureAndSaveIncreasingLength(sortingFunction sort, string fileName, int a
 int main()
 {
 	//             algorytm,  nazwa pliku, ilosc testow, dlugosc tablicy
-	MeasureAndSave(BubbleSort, "BubbleSort.txt", 10, 10000);
-	MeasureAndSave(InsertionSort, "InsertionSort.txt", 10, 10000);
-	MeasureAndSave(SelectionSort, "SelectionSort.txt", 10, 10000);
-	MeasureAndSave(CountingSort, "CountingSort.txt", 10, 10000);
-	MeasureAndSave(MergeSort, "MergeSort.txt", 10, 10000);
-	MeasureAndSave(ShellSort, "ShellSort.txt", 10, 10000);
-	MeasureAndSave(CombSort, "CombSort.txt", 10, 10000);
-	MeasureAndSave(BucketSort, "BucketSort.txt", 10, 10000);
-	MeasureAndSave(QuickSort, "QuickSort.txt", 10, 10000);
+	MeasureAndSave(BubbleSort, "BubbleSort.txt", 2, 10000);
+	MeasureAndSave(InsertionSort, "InsertionSort.txt", 2, 10000);
+	MeasureAndSave(SelectionSort, "SelectionSort.txt", 2, 10000);
+	MeasureAndSave(CountingSort, "CountingSort.txt", 2, 10000);
+	MeasureAndSave(MergeSort, "MergeSort.txt", 2, 10000);
+	MeasureAndSave(ShellSort, "ShellSort.txt", 2, 10000);
+	MeasureAndSave(CombSort, "CombSort.txt", 2, 10000);
+	MeasureAndSave(BucketSort, "BucketSort.txt", 2, 10000);
+	MeasureAndSave(QuickSort, "QuickSort.txt", 2, 10000);
 }
