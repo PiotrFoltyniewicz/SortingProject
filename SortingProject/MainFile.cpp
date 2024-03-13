@@ -35,7 +35,7 @@ double MeasureTime(sortingFunction sort, vector<int> tab, bool print = false)
 	timeDiff = (end - start) / (long double)CLOCKS_PER_SEC;
 
 	if (print)
-		cout << "Czas wykonania: " << timeDiff << '\n';
+		cout << "Execution time: " << timeDiff << '\n';
 	return timeDiff;
 }
 
@@ -48,7 +48,7 @@ void SaveList(vector<int> tab, string fileName)
 
 	if (!file.good())
 	{
-		cout << "Blad przy otwieraniu pliku." << '\n';
+		cout << "Error when opening file." << '\n';
 		return;
 	}
 
@@ -56,7 +56,7 @@ void SaveList(vector<int> tab, string fileName)
 	{
 		file << tab[i] << '\n';
 	}
-	cout << "Zapisano liste w pliku " << fileName << '\n';
+	cout << "Saved list to the file " << fileName << '\n';
 }
 
 // dla wektora double / wektor z pomiarami czasu
@@ -68,19 +68,19 @@ void SaveMeasurements(vector<double long> tab, string fileName, int amount, int 
 
 	if (!file.good())
 	{
-		cout << "Blad przy otwieraniu pliku." << '\n';
+		cout << "Error when opening the file." << '\n';
 		return;
 	}
 
-	file << "Wynik " << amount << " pomiarow dla tablicy o dlugosci " << size << " i maksymalnej wartosci " << maxValue << '\n';
-	file << "Sredni czas sortowania: " << tab.back() << '\n';
+	file << "Result of " << amount << " measurements for list of length " << size << " and maximum value " << maxValue << '\n';
+	file << "Average sorting time: " << tab.back() << '\n';
 	tab.pop_back();
 
 	for (int i = 0; i < tab.size(); i++)
 	{
 		file << tab[i] << '\n';
 	}
-	cout << "Zapisano pomiary w pliku " << fileName << '\n';
+	cout << "Measurements saved to the file " << fileName << '\n';
 }
 
 vector<int> GetList(string fileName)
@@ -92,7 +92,7 @@ vector<int> GetList(string fileName)
 
 	if (!file.good())
 	{
-		cout << "Blad przy otwieraniu pliku." << '\n';
+		cout << "Error when opening the file." << '\n';
 
 		return tab;
 	}
@@ -103,7 +103,7 @@ vector<int> GetList(string fileName)
 		tab.push_back(value);
 	}
 
-	cout << "Wczytano plik" << '\n';
+	cout << "File loaded" << '\n';
 
 	return tab;
 }
@@ -132,7 +132,7 @@ void MeasureAndSave(sortingFunction sort, string fileName, int amount, int lengt
 	{
 		measurements[i] = MeasureTime(sort, GenerateRandomList(20000, length));
 		average += measurements[i];
-		cout << "Powtorzenie " << i + 1 << '\n';
+		cout << "Repetition " << i + 1 << '\n';
 	}
 	average /= amount;
 	measurements.push_back(average);
@@ -152,22 +152,31 @@ void MeasureAndSaveIncreasingLength(sortingFunction sort, string fileName, int a
 	{
 		file << MeasureTime(sort, GenerateRandomList(20000, length)) << '\n';
 		length += 10000;
-		cout << "Powtorzenie " << i + 1 << '\n';
+		cout << "Repetition " << i + 1 << '\n';
 	}
 
-	cout << "Zapisano pomiary w pliku " << fileName << '\n';
+	cout << "Measurements saved to the file " << fileName << '\n';
 }
 
 int main()
 {
 	//             algorytm,  nazwa pliku, ilosc testow, dlugosc tablicy
-	MeasureAndSave(BubbleSort, "BubbleSort.txt", 2, 10000);
-	MeasureAndSave(InsertionSort, "InsertionSort.txt", 2, 10000);
-	MeasureAndSave(SelectionSort, "SelectionSort.txt", 2, 10000);
-	MeasureAndSave(CountingSort, "CountingSort.txt", 2, 10000);
-	MeasureAndSave(MergeSort, "MergeSort.txt", 2, 10000);
-	MeasureAndSave(ShellSort, "ShellSort.txt", 2, 10000);
-	MeasureAndSave(CombSort, "CombSort.txt", 2, 10000);
-	MeasureAndSave(BucketSort, "BucketSort.txt", 2, 10000);
-	MeasureAndSave(QuickSort, "QuickSort.txt", 2, 10000);
+	MeasureAndSave(BubbleSort, "BubbleSort.txt", 5, 20000);
+	MeasureAndSave(InsertionSort, "InsertionSort.txt", 5, 20000);
+	MeasureAndSave(SelectionSort, "SelectionSort.txt", 5, 20000);
+	MeasureAndSave(CountingSort, "CountingSort.txt", 5, 20000);
+	MeasureAndSave(MergeSort, "MergeSort.txt", 5, 20000);
+	MeasureAndSave(ShellSort, "ShellSort.txt", 5, 20000);
+	MeasureAndSave(CombSort, "CombSort.txt", 5, 20000);
+	MeasureAndSave(BucketSort, "BucketSort.txt", 5, 20000);
+	MeasureAndSave(QuickSort, "QuickSort.txt", 5, 20000);
+	MeasureAndSaveIncreasingLength(BubbleSort, "BubbleSortIncreasing.txt", 5, 10000);
+	MeasureAndSaveIncreasingLength(InsertionSort, "InsertionSortIncreasing.txt", 5, 10000);
+	MeasureAndSaveIncreasingLength(SelectionSort, "SelectionSortIncreasing.txt", 5, 10000);
+	MeasureAndSaveIncreasingLength(CountingSort, "CountingSortIncreasing.txt", 5, 10000);
+	MeasureAndSaveIncreasingLength(MergeSort, "MergeSortIncreasing.txt", 5, 10000);
+	MeasureAndSaveIncreasingLength(ShellSort, "ShellSortIncreasing.txt", 5, 10000);
+	MeasureAndSaveIncreasingLength(CombSort, "CombSortIncreasing.txt", 5, 10000);
+	MeasureAndSaveIncreasingLength(BucketSort, "BucketSortIncreasing.txt", 5, 10000);
+	MeasureAndSaveIncreasingLength(QuickSort, "QuickSortIncreasing.txt", 5, 10000);
 }
