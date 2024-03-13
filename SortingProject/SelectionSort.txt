@@ -1,4 +1,0 @@
-Wynik 2 pomiarow dla tablicy o dlugosci 10000 i maksymalnej wartosci 20000
-Sredni czas sortowania: 1.131
-1.128
-1.134
